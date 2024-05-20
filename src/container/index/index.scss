@@ -1,7 +1,117 @@
 @use '../../style' as s;
 
-main {
-	background: s.color(dark);
-	color: s.color(light);
-	padding: s.space(4);
+.page {
+	margin: 0 auto;
+	max-width: 720px;
+	width: 100%;
+	background-color: s.color(white);
+
+	display: flex;
+	flex-direction: column;
+	padding: s.space(6);
+	gap: s.space(6);
+
+	box-shadow: 0 0 10px 5px s.color(gray);
+	border-radius: s.space(3);
 } 
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	color: s.color(dark)
+}
+
+.form {
+	width: 100%;
+	display: flex;
+	gap: s.space(3);
+	justify-content: space-between;
+
+	&__input {
+		border: 1px solid s.color(gray);
+		border-radius: 4px;
+		padding: 12px;
+		width: 100%;
+		}
+
+	&__button {
+		background-color: s.color(blue);
+		border-radius: 4px;
+		font-size: 16px;
+		color: s.color(white);
+		padding: s.space(3);
+
+		transition: 0.5s opacity;
+		
+			&:hover {
+				cursor: pointer;
+				opacity: 0.7;
+			}
+	}
+	&::placeholder {
+		color: s.color(grey)
+	}
+}
+
+
+
+
+.task {
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	& {
+		display: grid;
+		grid-template-columns: auto 1fr auto auto;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 0;
+		border-bottom: 1px solid s.color(grey);
+	}
+	
+	&__number {
+		color: s.color(dark);
+		font-size: 14px;
+	}
+
+
+	&__text {
+		font-size: 16px;
+		color: s.color(dark);
+		transition: opacity 0.5s;
+	}
+	//селектор нащадка
+	&--done &__text {
+		text-decoration: line-through;
+		opacity: 0.5;
+	}
+
+	&__button {
+		transition: opacity 0.5s;
+
+		&:hover {
+			opacity: 0.5;
+		}
+
+		display: block;
+		height: 28px;
+		width: 28px;
+		background-size: cover;
+
+		&--do {
+			// в url почати з ,/, бо не працюэ!!! так як для src ../../
+			background-image: url("/../../svg/do.svg");
+		}
+
+		&--done {
+			background-image: url("/../../svg/done.svg");
+		}
+
+		&--delete {
+			background-image: url("/../../svg/delete.svg");
+		}
+	}
+}
